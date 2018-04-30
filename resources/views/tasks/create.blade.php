@@ -6,8 +6,8 @@
     
     {!! Form::model($task, ['route' => 'tasks.store']) !!}
         
-        {!! Form::label('task', 'タスク') !!}
-        {!! Form::text('task') !!}
+        {!! Form::label('content', 'タスク') !!}
+        {!! Form::text('content') !!}
         
         {!! Form::submit('新規作成') !!}
         
