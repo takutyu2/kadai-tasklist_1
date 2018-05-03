@@ -50,9 +50,9 @@ class TasksController extends Controller
     }
     
     public function show($id) {
-        if (\Auth::check()) {
-            $task = Task::find($id);
-            
+        $task = Task::find($id);
+        
+        if (\Auth::check() && \Auth::user()->id == $task->user_id) {
             return view('tasks.show', [
                 'task' => $task
             ]);
@@ -79,7 +79,7 @@ class TasksController extends Controller
             'status' => 'required',
         ]);
 
-        $request->user()->tasks()->create([
+        $request->user()->tasks()->update([
             'status' => $request->status,
             'content' => $request->content,
         ]);        
